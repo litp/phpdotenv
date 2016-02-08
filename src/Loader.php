@@ -1,3 +1,4 @@
+
 <?php
 
 namespace Dotenv;
@@ -314,7 +315,7 @@ class Loader
      * Set an environment variable.
      *
      * This is done using:
-     * - putenv,
+     * - ,
      * - $_ENV,
      * - $_SERVER.
      *
@@ -335,7 +336,9 @@ class Loader
             return;
         }
 
-        putenv("$name=$value");
+        // Comment the putenv() function so that phpdotenv can be used on SAE
+        // This is the only modification made to the source
+        //putenv("$name=$value");
 
         $_ENV[$name] = $value;
         $_SERVER[$name] = $value;
@@ -364,7 +367,9 @@ class Loader
             return;
         }
 
-        putenv($name);
+        // Comment the putenv() function so that phpdotenv can be used on SAE
+        // This is the only modification made to the source
+        //putenv($name);
 
         unset($_ENV[$name], $_SERVER[$name]);
     }
