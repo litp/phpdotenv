@@ -1,7 +1,7 @@
 {
     "name": "litp/sae-phpdotenv",
     "type": "library",
-    "description": "A modified version of dotenv for SinaAppEngine",
+    "description": "A modified version of dotenv that checks putenv function before using it",
     "keywords": ["env", "dotenv", "environment","sae"],
     "homepage": "http://github.com/litp/sae-phpdotenv",
     "license" : "BSD",

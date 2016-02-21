@@ -335,9 +335,11 @@ class Loader
             return;
         }
 
-        // Comment the putenv() function so that phpdotenv can be used on SAE
-        // This is the only modification made to the source
-        //putenv("$name=$value");
+        // Since some PaaS disabled putenv function, so we check if the 
+        // function putenv exists before using
+        if (function_exists('putenv') {
+            putenv("$name=$value");
+        }
 
         $_ENV[$name] = $value;
         $_SERVER[$name] = $value;
@@ -366,10 +368,12 @@ class Loader
             return;
         }
 
-        // Comment the putenv() function so that phpdotenv can be used on SAE
-        // This is the only modification made to the source
-        //putenv($name);
-
+        // Since some PaaS disabled putenv function, so we check if the 
+        // function putenv exists before using
+        if (function_exists('putenv') {
+            putenv($name);
+        }
+        
         unset($_ENV[$name], $_SERVER[$name]);
     }
 }
