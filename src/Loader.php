@@ -334,9 +334,11 @@ class Loader
         if ($this->immutable && $this->getEnvironmentVariable($name) !== null) {
             return;
         }
-
-        putenv("$name=$value");
-
+        
+        if (function_exists('putenv')){
+            putenv("$name=$value");
+        }
+        
         $_ENV[$name] = $value;
         $_SERVER[$name] = $value;
     }
@@ -363,8 +365,10 @@ class Loader
         if ($this->immutable) {
             return;
         }
-
-        putenv($name);
+        
+        if (function_exists('putenv')){
+            putenv($name);
+        }
 
         unset($_ENV[$name], $_SERVER[$name]);
     }
