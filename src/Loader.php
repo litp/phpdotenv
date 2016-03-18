@@ -322,7 +322,7 @@ class Loader
      * Set an environment variable.
      *
      * This is done using:
-     * - putenv,
+     * - ,
      * - $_ENV,
      * - $_SERVER.
      *
@@ -342,11 +342,21 @@ class Loader
         if ($this->immutable && $this->getEnvironmentVariable($name) !== null) {
             return;
         }
+<<<<<<< HEAD
         
         if ($this->putenvAllowed){
             putenv("$name=$value");
         }
         
+=======
+
+        // Since some PaaS disabled putenv function, so we check if the 
+        // function putenv exists before using
+        if (function_exists('putenv') {
+            putenv("$name=$value");
+        }
+
+>>>>>>> master
         $_ENV[$name] = $value;
         $_SERVER[$name] = $value;
     }
@@ -373,11 +383,21 @@ class Loader
         if ($this->immutable) {
             return;
         }
+<<<<<<< HEAD
         
         if ($this->putenvAllowed){
             putenv($name);
         }
 
+=======
+
+        // Since some PaaS disabled putenv function, so we check if the 
+        // function putenv exists before using
+        if (function_exists('putenv') {
+            putenv($name);
+        }
+        
+>>>>>>> master
         unset($_ENV[$name], $_SERVER[$name]);
     }
 }
